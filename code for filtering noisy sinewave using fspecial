@@ -1,0 +1,21 @@
+clc
+clear all;
+close all;
+A = 5;
+wn = 10;
+t = 0:0.01:1;
+
+xn2 = A * sin(wn * t);
+xn1 = A * sin(wn * t) + awgn(xn2, 0.5);
+
+ fi = fspecial('average',10);
+ 
+ x_filtered = 5*conv2(xn1,fi,'same');
+ 
+ subplot(3,1,1);
+plot(t,xn2);
+subplot(3,1,2);
+plot(t,xn1);
+subplot(3,1,3);
+plot(t,x_filtered);
+ylim([-5 5]);
