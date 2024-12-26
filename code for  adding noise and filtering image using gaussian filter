@@ -1,0 +1,18 @@
+clc
+clear all
+close all
+
+org_img = imread('Lenna.png');
+
+subplot(1,3,1);
+imshow(org_img);
+
+noisy_img = imnoise(org_img,'salt & pepper',0.5);
+
+subplot(1,3,2);
+imshow(noisy_img);
+
+f  = imgaussfilt(noisy_img,5);
+
+subplot(1,3,3);
+imshow(f);
